@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <!--====================================================================-->
+    <modelVersion>4.0.0</modelVersion>
+
+
+    <!--====================================================================-->
+    <parent>
+        <groupId>ao.common</groupId>
+        <artifactId>ao-parent</artifactId>
+        <version>5</version>
+    </parent>
+
+
+    <!--====================================================================-->
+    <groupId>ao.game.ao-robocode-bot</groupId>
+    <artifactId>ao-robocode-bot</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+
+
+    <!--====================================================================-->
+    <dependencies>
+        <dependency>
+            <groupId>net.sf.robocode</groupId>
+            <artifactId>robocode-api</artifactId>
+            <version>1.7.2.2-BETA</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+
+    <!--====================================================================-->
+    <properties>
+        <!--
+        <robocode.robots.relative.path>
+            ../../../../prog/robocode/robots
+        </robocode.robots.relative.path>
+        -->
+        <robocode.robots.relative.path>
+            target/robocode/robots
+        </robocode.robots.relative.path>
+    </properties>
+
+
+    <!--====================================================================-->
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>2.2</version>
+
+                <executions>
+                    <execution>
+                        <id>ao-simple-bot</id>
+
+                        <goals><goal>
+                            single
+                        </goal></goals>
+                        <phase>package</phase>
+
+                        <configuration>
+                            <descriptorRefs>
+                                <descriptorRef>
+                                    jar-with-dependencies
+                                </descriptorRef>
+                            </descriptorRefs>
+
+                            <appendAssemblyId>false</appendAssemblyId>
+                            <finalName>${robocode.robots.relative.path}/ao-bot</finalName>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+
+    <!--====================================================================-->
+    <repositories>
+        <repository>
+            <id>ao-central</id>
+            <name>AO Specific Releases</name>
+            <url>https://raw.githubusercontent.com/alexoooo/ao-commons/master/lib-releases</url>
+        </repository>
+        <repository>
+            <id>ao-ext</id>
+            <name>AO External Releases</name>
+            <url>https://raw.githubusercontent.com/alexoooo/ao-commons/master/ext-releases</url>
+        </repository>
+    </repositories>
+</project>
